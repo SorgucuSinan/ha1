@@ -31,9 +31,14 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        // Überprüfung, ob der Bildschirm bereits die maximale Anzahl von 10 Zeichen hat
+        if (screen.length() < 10) {
+            if(screen.equals("0") || latestValue == Double.parseDouble(screen)) {
+                screen = "";
+            }
 
-        screen = screen + digit;
+            screen = screen + digit;
+        }
     }
 
     /**
@@ -118,6 +123,12 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+        // Überprüfung auf Division durch Null
+        if (latestOperation.equals("/") && Double.parseDouble(screen) == 0) {
+            screen = "Error";
+            return;
+        }
+
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
