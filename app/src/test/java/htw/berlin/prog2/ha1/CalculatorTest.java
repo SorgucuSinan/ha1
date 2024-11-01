@@ -104,5 +104,29 @@ class CalculatorTest {
         String actual = calc.readScreen();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display 'Error' when dividing zero by zero")
+    void testZeroDividedByZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result as 0 when taking square root of zero")
+    void testSquareRootOfZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("√");
+        String expected = "0.0";  // Oder "0", je nachdem, wie der Bildschirm implementiert ist
+        String actual = calc.readScreen();
+        Assertions.assertEquals(expected, actual);
+}
 }
 
