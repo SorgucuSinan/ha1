@@ -119,5 +119,28 @@ class CalculatorTest {
         String actual = calc.readScreen();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result of multiplying two large numbers")
+    void testLargeMultiplication() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+        String expected = "99999980000001";
+        String actual = calc.readScreen();
+        Assertions.assertEquals(expected, actual);
+    }
 }
 
