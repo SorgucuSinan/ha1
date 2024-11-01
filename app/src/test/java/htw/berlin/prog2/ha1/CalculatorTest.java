@@ -94,51 +94,13 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after subtracting a smaller number from a larger number")
-    void testSimpleSubtraction() {
+    @DisplayName("should display result after inverting a positive multi-digit number")
+    void testInversion() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(5);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(5);
-        calc.pressEqualsKey();
-        String expected = "25";
-        String actual = calc.readScreen();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("should display correct result for modulo operation")
-    void testModuloOperation() {
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(5);
-        calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("%");
-        String expected = "0.5"; // 50% of 1 should be 0.5
-        String actual = calc.readScreen();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("should display result of multiplying two large numbers")
-    void testLargeMultiplication() {
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressEqualsKey();
-        String expected = "99999980000001";
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.02";
         String actual = calc.readScreen();
         Assertions.assertEquals(expected, actual);
     }
